@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtyqdc6tkrb1i"]
+[gd_scene load_steps=11 format=3 uid="uid://dtyqdc6tkrb1i"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_gp8kf"]
 [ext_resource type="Texture2D" uid="uid://cr8rt3i0txexa" path="res://game/background/hangman_background1.png" id="1_wxix7"]
@@ -37,10 +37,6 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk36q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmbjn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqs10"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnh73"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_gp8kf")
@@ -85,24 +81,3 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "_ _ _ _ _ _ _ _ _ _ "
-
-[node name="HSeparator3" type="HSeparator" parent="UI/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_cqs10")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "write your char here:"
-
-[node name="VSeparator" type="VSeparator" parent="UI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_lnh73")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-alignment = 1
-max_length = 1

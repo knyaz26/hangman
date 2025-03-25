@@ -1,6 +1,6 @@
-extends Node
+extends Node2D
 
-var words = [
+@onready var words = [
 	"ability", "abstract", "adventure", "algorithm", "analysis", "antique", "apology", "asteroid", "biology", 
 	"bicycle", "calendar", "celebrate", "climate", "compiler", "conclusion", "convention", "create", "crystal", 
 	"decimal", "destination", "document", "elephant", "equator", "fortune", "glimpse", "harmony", "horizon", 
@@ -33,3 +33,19 @@ var words = [
 	"voltage", "wire", "calculative", "error", "fallout", "fracture", "interference", "join", "limit", "solution", 
 	"synchronize", "tangle", "zone", "horizon", "ignite", "modular", "optical", "stream", "xenon", "formulation"
 ]
+
+var mystery_word
+var death_escalation = 0
+
+func _ready() -> void:
+	mystery_word = words[randi_range(0, 313)]
+	$UI/VBoxContainer/word.text = ""
+	for i in range(len(mystery_word)):
+		$UI/VBoxContainer/word.text += "_ "
+	print(mystery_word)
+
+
+
+func _process(delta: float) -> void:
+	if Input.is_physical_key_pressed(KEY_ENTER):
+		print($UI/VBoxContainer/HBoxContainer/LineEdit.text)
