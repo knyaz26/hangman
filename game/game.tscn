@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtyqdc6tkrb1i"]
+
+[ext_resource type="Texture2D" uid="uid://cr8rt3i0txexa" path="res://game/background/hangman_background1.png" id="1_wxix7"]
+[ext_resource type="Texture2D" uid="uid://30psq8lcmo58" path="res://game/background/hangman_background2.png" id="2_g04uy"]
+[ext_resource type="Texture2D" uid="uid://dqjl5mvdtxt0y" path="res://game/background/hangman_background3.png" id="3_fcql4"]
+[ext_resource type="Texture2D" uid="uid://u5qdmq3785uf" path="res://game/background/hangman_background4.png" id="4_tbyd1"]
+[ext_resource type="Texture2D" uid="uid://b7ws8h2tugjm5" path="res://game/background/hangman_background5.png" id="5_goecu"]
+[ext_resource type="Texture2D" uid="uid://bnl0a1t6uhvv2" path="res://game/background/hangman_background6.png" id="6_rx5y0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuxnn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wxix7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g04uy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fcql4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tbyd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_goecu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rx5y0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk36q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmbjn"]
+
+[node name="game" type="Node2D"]
+
+[node name="background" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iuxnn")
+centered = false
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(320, 360)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bk36q")
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "revealed letters:"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xmbjn")
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "_ _ _ _ _ _ _ _ _ _ "
