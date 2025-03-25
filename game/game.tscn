@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtyqdc6tkrb1i"]
+[gd_scene load_steps=20 format=3 uid="uid://dtyqdc6tkrb1i"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_gp8kf"]
 [ext_resource type="Texture2D" uid="uid://cr8rt3i0txexa" path="res://game/background/hangman_background1.png" id="1_wxix7"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://u5qdmq3785uf" path="res://game/background/hangman_background4.png" id="4_tbyd1"]
 [ext_resource type="Texture2D" uid="uid://b7ws8h2tugjm5" path="res://game/background/hangman_background5.png" id="5_goecu"]
 [ext_resource type="Texture2D" uid="uid://bnl0a1t6uhvv2" path="res://game/background/hangman_background6.png" id="6_rx5y0"]
+[ext_resource type="AudioStream" uid="uid://bjjp8d1517rpq" path="res://game/audio/wrong.ogg" id="8_c72mw"]
+[ext_resource type="AudioStream" uid="uid://c70wbi413ri6l" path="res://game/audio/correct.ogg" id="9_bqcob"]
+[ext_resource type="AudioStream" uid="uid://v1qxhsvb4j8u" path="res://game/audio/confirm.ogg" id="10_gtx34"]
+[ext_resource type="AudioStream" uid="uid://ekbdx6wuw8jq" path="res://game/audio/error_005.ogg" id="11_0do18"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iuxnn"]
 animations = [{
@@ -172,4 +176,18 @@ layout_mode = 2
 alignment = 1
 max_length = 1
 
+[node name="Wrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_c72mw")
+
+[node name="Correct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bqcob")
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gtx34")
+
+[node name="Error005" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_0do18")
+
+[connection signal="text_change_rejected" from="UI/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_change_rejected"]
+[connection signal="text_changed" from="UI/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="text_submitted" from="UI/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

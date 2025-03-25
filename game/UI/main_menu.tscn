@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq376fwqg0vh6"]
+[gd_scene load_steps=5 format=3 uid="uid://dq376fwqg0vh6"]
 
 [ext_resource type="Script" path="res://game/UI/main_menu.gd" id="1_ewkol"]
+[ext_resource type="AudioStream" uid="uid://v1qxhsvb4j8u" path="res://game/audio/confirm.ogg" id="2_dsb4p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bp1xv"]
 
@@ -80,3 +81,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 1
 text = "[Q] quit"
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dsb4p")

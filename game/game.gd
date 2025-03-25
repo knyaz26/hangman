@@ -54,9 +54,12 @@ func _process(delta: float) -> void:
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if new_text and !used_chars.contains(new_text):
+		$Correct.play()
 		used_chars += new_text
 		reveal_mystery_word(new_text)
 		reveal_new_keys(new_text)
+	else:
+		$Wrong.play()
 	$UI/VBoxContainer/HBoxContainer/LineEdit.text = ""
 
 func reveal_new_keys(new_text):
@@ -90,3 +93,11 @@ func game_lost():
 
 func reset():
 	pass
+
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	$Confirm.play()
+
+
+func _on_line_edit_text_change_rejected(rejected_substring: String) -> void:
+	$Error005.play()

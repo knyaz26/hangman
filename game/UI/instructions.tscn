@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpn08ignhcpxm"]
+[gd_scene load_steps=4 format=3 uid="uid://cpn08ignhcpxm"]
 
 [ext_resource type="Script" path="res://game/UI/instructions.gd" id="1_i0tig"]
+[ext_resource type="AudioStream" uid="uid://v1qxhsvb4j8u" path="res://game/audio/confirm.ogg" id="2_kwd7t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5o4vl"]
 
@@ -66,3 +67,6 @@ size_flags_horizontal = 4
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 15
 text = "press [esc] to exit"
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kwd7t")
