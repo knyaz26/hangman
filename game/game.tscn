@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtyqdc6tkrb1i"]
+[gd_scene load_steps=16 format=3 uid="uid://dtyqdc6tkrb1i"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_gp8kf"]
 [ext_resource type="Texture2D" uid="uid://cr8rt3i0txexa" path="res://game/background/hangman_background1.png" id="1_wxix7"]
@@ -34,6 +34,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2m6m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3auwp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3imu2"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk36q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmbjn"]
@@ -48,6 +54,65 @@ script = ExtResource("1_gp8kf")
 [node name="background" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iuxnn")
 centered = false
+
+[node name="ColorRect" type="ColorRect" parent="background"]
+visible = false
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.118581, 0.118581, 0.118581, 0.776471)
+
+[node name="Control" type="Control" parent="background/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="background/ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="background/ColorRect/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_e2m6m")
+
+[node name="Label" type="Label" parent="background/ColorRect/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/shadow_offset_y = -3
+theme_override_font_sizes/font_size = 35
+text = "placeholder"
+
+[node name="HSeparator2" type="HSeparator" parent="background/ColorRect/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3auwp")
+
+[node name="Label2" type="Label" parent="background/ColorRect/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "placeholder2
+"
+
+[node name="HSeparator3" type="HSeparator" parent="background/ColorRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3imu2")
+
+[node name="Label3" type="Label" parent="background/ColorRect/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "press [esc] to return to main menu"
 
 [node name="UI" type="Control" parent="."]
 custom_minimum_size = Vector2(320, 360)
@@ -73,7 +138,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_bk36q")
 [node name="used_letters" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "revealed letters:"
+text = "revealed letters: "
 
 [node name="HSeparator2" type="HSeparator" parent="UI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -106,3 +171,5 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_lnh73")
 layout_mode = 2
 alignment = 1
 max_length = 1
+
+[connection signal="text_submitted" from="UI/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

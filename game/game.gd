@@ -35,7 +35,8 @@ extends Node2D
 ]
 
 var mystery_word
-var death_escalation = 0
+var chars_revealed = 0
+var used_chars = "."
 
 func _ready() -> void:
 	mystery_word = words[randi_range(0, 313)]
@@ -47,5 +48,45 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_physical_key_pressed(KEY_ENTER):
-		print($UI/VBoxContainer/HBoxContainer/LineEdit.text)
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().change_scene_to_file("res://game/UI/main_menu.tscn")
+		reset()
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	if new_text and !used_chars.contains(new_text):
+		used_chars += new_text
+		reveal_mystery_word(new_text)
+		reveal_new_keys(new_text)
+	$UI/VBoxContainer/HBoxContainer/LineEdit.text = ""
+
+func reveal_new_keys(new_text):
+	$UI/VBoxContainer/used_letters.text += new_text +  ", "
+	
+func reveal_mystery_word(new_text):
+	if mystery_word.contains(new_text):
+		for i in range(len(mystery_word)):
+			if mystery_word[i] == new_text:
+				$UI/VBoxContainer/word.text[i * 2] = new_text
+				chars_revealed += 1
+				if chars_revealed == len(mystery_word):
+					game_won()
+	else:
+		damage()
+		
+func damage():
+	if $background.frame == 4:
+		game_lost()
+	$background.frame += 1
+	
+func game_won():
+	$background/ColorRect.visible = true
+	$background/ColorRect/Control/VBoxContainer/Label.text = "Congrats you won"
+	$background/ColorRect/Control/VBoxContainer/Label2.text = "silly rat lives another day."
+	
+func game_lost():
+	$background/ColorRect.visible = true
+	$background/ColorRect/Control/VBoxContainer/Label.text = "You lost :("
+	$background/ColorRect/Control/VBoxContainer/Label2.text = "look what you did."
+
+func reset():
+	pass

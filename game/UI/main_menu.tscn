@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq376fwqg0vh6"]
+
+[ext_resource type="Script" path="res://game/UI/main_menu.gd" id="1_ewkol"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bp1xv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j0peq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ewkol")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.647059, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bp1xv")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "main menu"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j0peq")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 1
+text = "[P] play"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j0peq")
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 1
+text = "[I] instructions"
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j0peq")
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 1
+text = "[Q] quit"
