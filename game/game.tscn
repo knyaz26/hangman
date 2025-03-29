@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtyqdc6tkrb1i"]
+[gd_scene load_steps=22 format=3 uid="uid://dtyqdc6tkrb1i"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_gp8kf"]
 [ext_resource type="Texture2D" uid="uid://cr8rt3i0txexa" path="res://game/background/hangman_background1.png" id="1_wxix7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://u5qdmq3785uf" path="res://game/background/hangman_background4.png" id="4_tbyd1"]
 [ext_resource type="Texture2D" uid="uid://b7ws8h2tugjm5" path="res://game/background/hangman_background5.png" id="5_goecu"]
 [ext_resource type="Texture2D" uid="uid://bnl0a1t6uhvv2" path="res://game/background/hangman_background6.png" id="6_rx5y0"]
+[ext_resource type="FontFile" uid="uid://dljjnk5dsq0cf" path="res://game/timer/fonts/Seven Segment.ttf" id="8_b67de"]
 [ext_resource type="AudioStream" uid="uid://bjjp8d1517rpq" path="res://game/audio/wrong.ogg" id="8_c72mw"]
 [ext_resource type="AudioStream" uid="uid://c70wbi413ri6l" path="res://game/audio/correct.ogg" id="9_bqcob"]
 [ext_resource type="AudioStream" uid="uid://v1qxhsvb4j8u" path="res://game/audio/confirm.ogg" id="10_gtx34"]
@@ -51,6 +52,13 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqs10"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnh73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdxs5"]
+bg_color = Color(1, 1, 1, 0.301961)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_gp8kf")
@@ -173,8 +181,35 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_lnh73")
 
 [node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_cdxs5")
 alignment = 1
 max_length = 1
+
+[node name="HSeparator4" type="HSeparator" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bk36q")
+
+[node name="ColorRect" type="ColorRect" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.5
+offset_right = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.585847, 1.8049e-06, 4.33177e-07, 1)
+theme_override_fonts/font = ExtResource("8_b67de")
+theme_override_font_sizes/font_size = 30
+text = ")):))"
 
 [node name="Wrong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_c72mw")
