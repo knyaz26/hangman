@@ -191,7 +191,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bk36q")
 
 [node name="ColorRect" type="ColorRect" parent="UI/VBoxContainer"]
-custom_minimum_size = Vector2(60, 30)
+custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 color = Color(0, 0, 0, 1)
@@ -222,6 +222,8 @@ stream = ExtResource("10_gtx34")
 
 [node name="Error005" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_0do18")
+
+[node name="doom_timer" type="Timer" parent="."]
 
 [connection signal="text_change_rejected" from="UI/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_change_rejected"]
 [connection signal="text_changed" from="UI/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]

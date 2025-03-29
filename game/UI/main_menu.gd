@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://game/UI/instructions.tscn")
 	if Input.is_key_pressed(KEY_Q):
 		$Confirm.play()
-		queue_free()
+		get_tree().quit()
