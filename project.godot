@@ -13,6 +13,7 @@ config_version=5
 config/name="hangman"
 run/main_scene="res://game/UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://loading_screen.png"
 config/icon="res://icon.png"
 
 [display]
